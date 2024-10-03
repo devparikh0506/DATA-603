@@ -12,7 +12,7 @@ class NonEngWordCount(MRJob):
         for word in line.split():
             if word:
                 formatted_word = ''.join(letter for letter in word.lower() if letter.isalnum()).strip() 
-                if formatted_word and not self.d.check(formatted_word):
+                if formatted_word  and len(formatted_word) > 0 and not self.d.check(formatted_word):
                     yield(formatted_word, 1)
 
     def reducer(self, word, counts):
